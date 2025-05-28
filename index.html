@@ -5,21 +5,31 @@
         <title>Last minute recorder</title>
         <script src="queue.js"></script>
         <script src="WAV_merge.js"></script>
+        <link rel = "stylesheet" href = "style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        
     </head>
     <body>
-        <h1>Nagrywanie</h1>
+        <header><h1>Nagrywanie</h1></header>
 
         <div>
-            <label for="timeSlid">Wybierz czas: <span id="timeDispl">01:00</span></label><br>
-            <input type="range" id="timeSlid" name="slider" min="3" max="180" value = "60">
+            <label for="timeSlid">Wybierz czas: 
+                <input type="time" id = "timeDispl">
+            </label>
+                <br>
+            <input type="range" id="timeSlid" name="slider" min="3" max="180">
         </div>
 
-        <div>
-            <button id = 'capture'>Przechwyc</button>
-            <audio id = 'aud_cont' controls></audio>
+        <canvas id="oscilloscope" width="1000px" height="400px"></canvas>
+
+        <div id = "buttons">
+            <div>
+                <button id = 'capture'><span>Przechwyc</span><i class="fa-solid fa-camera"></i></button>
+                <audio id = 'aud_cont' controls></audio>
+            </div>
+            <a id = 'downLink'><button id = 'download'><span>Pobierz</span><i class="fa-solid fa-download"></i></button></a>
         </div>
-        <button id = 'download'>Pobierz</button>
-        
+
         <script src="script.js"></script>
     </body>
 </html>
