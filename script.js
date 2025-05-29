@@ -27,8 +27,11 @@ timeSlid.addEventListener('input', () => {
 let audioChunks = new Queue();
 
 let stream; let mediaRecorder;
+
 window.onload = async () => {
     stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    
+    document.getElementById('overlay').style.display = 'none';
     mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.ondataavailable = async event => audioChunks.push(event.data);
@@ -52,16 +55,17 @@ const controls = document.getElementById('aud_cont');
 let audioURL ;//= URL.createObjectURL(null);
 let last_refreshed_URL = new Date();
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function refrURL() {
+    while(audioChunks.size == 0) await sleep(100);
     if(audioURL) URL.revokeObjectURL(audioURL);
     const mergedBlob = await mergeAudioBlobs(audioChunks.toArr());
     audioURL = await URL.createObjectURL(mergedBlob);
 
     controls.src = audioURL;
-}
-
-controls.on = event => { 
-    console.log('aaa');
 }
 
 capture.onclick = async () => {
@@ -70,6 +74,7 @@ capture.onclick = async () => {
 
 const downButt = document.getElementById('download');
 const downLink = document.getElementById('downLink');
+const captDownButt = document.getElementById('capt_down')
 
 function data_i_czas() {
     let date = new Date();
@@ -78,6 +83,13 @@ function data_i_czas() {
 }
 
 downButt.onclick = async () => {
+    if(audioURL == undefined) await refrURL();
+    downLink.href = audioURL;
+    downLink.download = data_i_czas() + '.wav';
+    downLink.click();
+}
+
+captDownButt.onclick = async () => {
     await refrURL();
     downLink.href = audioURL;
     downLink.download = data_i_czas() + '.wav';

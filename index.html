@@ -10,6 +10,13 @@
         
     </head>
     <body>
+        <div id="overlay">
+            <div id="popup">
+                <p>Udziel dostępu do mikrofonu, aby korzystać z aplikcaji</p>
+            </div>
+        </div>
+        <a id = 'downLink'></a>
+
         <header><h1>Nagrywanie</h1></header>
 
         <div>
@@ -23,11 +30,13 @@
         <canvas id="oscilloscope" width="1000px" height="400px"></canvas>
 
         <div id = "buttons">
-            <div>
+            <div id = "audio_i_przechyc">
                 <button id = 'capture'><span>Przechwyc</span><i class="fa-solid fa-camera"></i></button>
                 <audio id = 'aud_cont' controls></audio>
             </div>
-            <a id = 'downLink'><button id = 'download'><span>Pobierz</span><i class="fa-solid fa-download"></i></button></a>
+            <a id = 'downlink'><button id = 'download'><span>Pobierz</span><i class="fa-solid fa-download"></i></button></a>
+            <a id = 'downlink'><button id = 'capt_down'><span>Przechwyć<br>i pobierz</span><i class="fa-solid fa-download"></i></button></a>
+    
         </div>
 
         <script src="script.js"></script>

@@ -12,6 +12,7 @@ body {
 header {
     background-color: #005b96;
     color: white;
+    box-sizing: border-box;
     width: 100%;
     padding: 1.5rem;
     text-align: center;
@@ -37,6 +38,11 @@ input[type="range"] {
     margin-top: 10px;
 }
 
+a {
+    all:unset;
+    display: flex;
+}
+
 button {
     background-color: #4a90e2;
     color: white;
@@ -49,6 +55,7 @@ button {
     transition: background-color 0.2s ease-in-out;
     text-align: center;
     align-items: center;
+    min-width: 150px;
 }
 
 button:hover {
@@ -68,6 +75,7 @@ button > span {
 i {
     font-size: 3rem;
     color: white;
+    margin-top: 10px;
 }
 
 #buttons {
@@ -92,5 +100,45 @@ span {
 
 #oscilloscope {
     width: 100%;
-    height: 200px;
+    height: 25vh;
+    margin: 0;
+}
+
+#audio_i_przechyc > * {
+    display: block;
+    align-items: center; 
+    justify-content: center; 
+    margin: 20px 0;
+    margin-top: 0;
+}
+
+#capture {
+    width: 100%;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+@media (max-width: 7cm) {
+    #buttons {
+        width: 100%;
+    }
 }
