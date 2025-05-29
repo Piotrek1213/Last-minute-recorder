@@ -137,6 +137,10 @@ span {
   text-align: center;
 }
 
+#downLink {
+    display: none;
+}
+
 @media (max-width: 7cm) {
     #buttons {
         width: 100%;
