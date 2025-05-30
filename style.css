@@ -152,7 +152,7 @@ span {
     margin-bottom: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 10cm) {
     body {
         font-size: 0.95rem;
     }
